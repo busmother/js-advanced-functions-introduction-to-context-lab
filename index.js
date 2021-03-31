@@ -55,10 +55,13 @@ const allWagesFor = function (employee){
     let eligibleDates = employee.timeInEvents.map(function(e){
         return e.date
     })
-
+//reduce is an array instance method - memo is each element, then d is the accumulated value
     let payable = eligibleDates.reduce(function(memo, d){ //what is memo? it looks like wages earned maybe?
+        console.log("memo", memo, "d", d)
         return memo + wagesEarnedOnDate(employee, d)
-    }, 0) // what's this 0?
+    }, 0) // what's this 0? - this is the initial value that we're starting off with. it could be an object
+    // you're trying to modify or a string. if you don't put the argument in it won't do the first element
+    //when it iterates everthing
     
     return payable
     
